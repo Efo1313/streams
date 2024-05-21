@@ -1,7 +1,7 @@
 {
     "output": {
         "folder": "BGDVR",
-        "bestFolder": "best",
+        "bestFolder": "BGDVR",
         "masterFolder": ""
     },
     "channels": [
