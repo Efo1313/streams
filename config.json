@@ -11,6 +11,11 @@
             "url": "https://www.youtube.com/@YirmidortTV/live"
         },
         {
+            "name": "TRT 1",
+            "slug": "trt1",
+            "url": "https://www.youtube.com/@trt1/live"
+        },
+        {
             "name": "ABB TV",
             "slug": "abbtv",
             "url": "https://www.youtube.com/@ankarabbld/live"
