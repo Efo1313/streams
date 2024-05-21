@@ -1,7 +1,7 @@
 {
     "output": {
         "folder": "YoTV",
-        "bestFolder": "best",
+        "bestFolder": "YoTV",
         "masterFolder": ""
     },
     "channels": [
