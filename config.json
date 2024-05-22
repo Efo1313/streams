@@ -1,6 +1,6 @@
 {
     "output": {
-        "folder": "YoTV",
+        "folder": "streams",
         "bestFolder": "best",
         "masterFolder": ""
     },
@@ -9,11 +9,6 @@
             "name": "24 TV",
             "slug": "24tv",
             "url": "https://www.youtube.com/@YirmidortTV/live"
-        },
-        {
-            "name": "TRT 1",
-            "slug": "trt1",
-            "url": "https://www.youtube.com/@trt1/live"
         },
         {
             "name": "ABB TV",
@@ -501,4 +496,4 @@
             "url": "https://www.youtube.com/@HuzurPinariTV/live"
         }
     ]
-        }
+}
