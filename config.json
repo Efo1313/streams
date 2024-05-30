@@ -436,6 +436,11 @@
             "url": "https://www.youtube.com/watch?v=mzCc5yX9soY"
         },
         {
+            "name": "EuroNews Bulgaria",
+            "slug": "euronewsbulgaria",
+            "url": "https://m.youtube.com/@euronewsbulgaria/live"
+        },
+        {
             "name": "TV Kayseri",
             "slug": "tvkayseri",
             "url": "https://www.twitch.tv/tvkayseri"
