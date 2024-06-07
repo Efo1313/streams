@@ -6,8 +6,8 @@
     },
     "channels": [
         {
-            "name": "radyo fm",
-            "slug": "radyofm",
+            "name": "kral fm",
+            "slug": "kralfm",
             "url": "https://www.youtube.com/@kralmuzik/live"
         },
         {
