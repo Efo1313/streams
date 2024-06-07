@@ -6,9 +6,9 @@
     },
     "channels": [
         {
-            "name": "24 TV",
-            "slug": "24tv",
-            "url": "https://www.youtube.com/@YirmidortTV/live"
+            "name": "kral pop",
+            "slug": "kralpop",
+            "url": "https://m.youtube.com/@kralmuzik/live"
         },
         {
             "name": "ABB TV",
