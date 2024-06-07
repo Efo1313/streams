@@ -1,1 +1,34 @@
-
+{
+    "output": {
+        "folder": "streams",
+        "bestFolder": "best",
+        "masterFolder": ""
+    },
+    "channels": [
+        {
+            "name": "24 TV",
+            "slug": "24tv",
+            "url": "https://www.youtube.com/@YirmidortTV/live"
+        },
+        {
+            "name": "ABB TV",
+            "slug": "abbtv",
+            "url": "https://www.youtube.com/@ankarabbld/live"
+        },
+        {
+            "name": "A Haber",
+            "slug": "ahaber",
+            "url": "https://www.youtube.com/@ahaber/live"
+        },
+        {
+            "name": "Van TV",
+            "slug": "vantv",
+            "url": "https://www.twitch.tv/vantvnet"
+        },
+        {
+            "name": "Huzur Pınarı TV",
+            "slug": "huzurpinari",
+            "url": "https://www.youtube.com/@HuzurPinariTV/live"
+        }
+    ]
+}
