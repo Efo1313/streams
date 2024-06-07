@@ -361,6 +361,11 @@
             "url": "https://www.twitch.tv/trabzontv"
         },
         {
+            "name": "TRT 1",
+            "slug": "trt1",
+            "url": "https://www.youtube.com/@trt1/live"
+        },
+        {
             "name": "TRT Haber",
             "slug": "trthaber",
             "url": "https://www.youtube.com/@trthaber/live"
