@@ -11,6 +11,11 @@
             "url": "https://www.youtube.com/@kralmuzik/live"
         },
         {
+            "name": "bnt 1",
+            "slug": "bnt1",
+            "url": "https://tv.bnt.bg/bnt1"
+        },
+        {
             "name": "ABB TV",
             "slug": "abbtv",
             "url": "https://www.youtube.com/@ankarabbld/live"
