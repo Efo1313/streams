@@ -11,6 +11,11 @@
             "url": "https://www.youtube.com/@kralmuzik/live"
         },
         {
+            "name": "24 TV",
+            "slug": "24tv",
+            "url": "https://www.youtube.com/@YirmidortTV/live"
+        },
+        {
             "name": "bnt 1",
             "slug": "bnt1",
             "url": "https://tv.bnt.bg/bnt1"
