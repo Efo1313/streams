@@ -519,6 +519,11 @@
             "name": "Huzur Pınarı TV",
             "slug": "huzurpinari",
             "url": "https://www.youtube.com/@HuzurPinariTV/live"
+        },
+        {
+            "name": "Yeşilçam Arzu film TV",
+            "slug": "yeşilçam",
+            "url": "https://m.youtube.com/live/li4kIJdyxs4?si=MLOcuKPCMC4cxDSe"
         }
     ]
 }
