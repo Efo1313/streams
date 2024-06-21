@@ -524,6 +524,11 @@
             "name": "Yeşilçam Arzu film TV",
             "slug": "yesilcam",
             "url": "https://m.youtube.com/live/li4kIJdyxs4?si=MLOcuKPCMC4cxDSe"
+        },
+        {
+            "name": "Kemal Sunal Filmleri TV",
+            "slug": "kemalsunalfilmleri",
+            "url": "https://youtube.com/@kemalsunalfilmlerivesahneleri?si=qTFZyl3jCZNlzGwv"
         }
     ]
 }
