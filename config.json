@@ -51,6 +51,11 @@
             "url": "https://www.youtube.com/@ariza/live"
         },
         {
+            "name": "aTV TV",
+            "slug": "atv",
+            "url": "https://m.youtube.com/@atvturkiye"
+        },
+        {
             "name": "Kemal Sunal Filmleri",
             "slug": "arzufilm",
             "url": "https://www.youtube.com/@arzufilm1964/live"
