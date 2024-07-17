@@ -539,6 +539,11 @@
             "name": "BNT 1",
             "slug": "bnt1",
             "url": "https://m.youtube.com/@BNT1/live"
+        },
+        {
+            "name": "BNT 1v",
+            "slug": "bnt1v",
+            "url": "https://www.youtube.com/live/qmnMKaynj3Q?si=faK0IqOtPIYGFMbz"
         }
     ]
 }
