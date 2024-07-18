@@ -501,11 +501,6 @@
             "url": "https://www.youtube.com/@Nilradyotv/live"
         },
         {
-            "name": "bTV",
-            "slug": "bTV",
-            "url": "http://85.11.144.8/archive/2/"
-        },
-        {
             "name": "Aşk-ı Neva",
             "slug": "askineva",
             "url": "https://www.youtube.com/@askineva/live"
@@ -544,6 +539,11 @@
             "name": "BNT 1v",
             "slug": "bnt1v",
             "url": "https://www.youtube.com/live/qmnMKaynj3Q?si=faK0IqOtPIYGFMbz"
+        },
+        {
+            "name": "bTV",
+            "slug": "bTV",
+            "url": "https://btvplus.bg/live/"
         }
     ]
 }
