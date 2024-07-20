@@ -554,6 +554,11 @@
             "name": "NOVA TV",
             "slug": "bgnovatv",
             "url": "https://nova.bg/live"
+        },
+        {
+            "name": "NOVA NEWS",
+            "slug": "bgnovanews",
+            "url": "https://nova.bg/live/news"
         }
     ]
 }
