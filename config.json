@@ -549,6 +549,11 @@
             "name": "BG ONAIR",
             "slug": "bgonair",
             "url": "https://www.predavatel.com/bg/play/tv_bgonair_live"
+        },
+        {
+            "name": "NOVA TV",
+            "slug": "novatv",
+            "url": "https://nova.bg/live"
         }
     ]
 }
