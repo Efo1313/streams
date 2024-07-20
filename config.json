@@ -544,6 +544,11 @@
             "name": "bTV",
             "slug": "bTV",
             "url": "https://btvplus.bg/live/"
+        },
+        {
+            "name": "BG ONAIR",
+            "slug": "bgonair",
+            "url": "https://www.predavatel.com/bg/play/tv_bgonair_live"
         }
     ]
 }
