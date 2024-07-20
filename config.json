@@ -552,7 +552,7 @@
         },
         {
             "name": "NOVA TV",
-            "slug": "novatv",
+            "slug": "bgnovatv",
             "url": "https://nova.bg/live"
         }
     ]
