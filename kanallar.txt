@@ -1,0 +1,65 @@
+BNT 1 HD: hd-bnt-1-hd-online
+BNT 2: bnt-2-online
+BNT 3 HD: hd-bnt-3-hd-online
+BNT 4: bnt-4-online
+NOVA TV HD: hd-nova-tv-hd-online
+NOVA NEWS HD: hd-nova-news-hd-online
+BTV HD: hd-btv-hd-online
+BULGARIA ON AIR: bulgaria-on-air-online
+EURONEWS BULGARIA: hd-euronews-bulgaria-hd-online
+BLOOMBERG TV: bloomberg-tv-online
+BTV ACTION HD: hd-btv-action-hd-online
+BTV CINEMA: btv-cinema-online
+BTV COMEDY: hd-btv-comedy-hd-online
+BTV STORY: btv-story-online
+DIEMA: hd-diema-hd-online
+DIEMA FAMILY: hd-diema-family-hd-online
+KINO NOVA: kino-nova-online
+STAR CRIME HD: hd-star-crime-hd-online
+STAR CHANNEL HD: hd-star-channel-hd-online
+STAR LIFE HD: hd-star-life-hd-online
+NAT GEO HD: hd-nat-geo-hd-online
+NAT GEO WILD HD: hd-nat-geo-wild-hd-online
+DISCOVERY CHANNEL HD: hd-discovery-channel-hd-online
+ID XTRA HD: hd-id-xtra-hd-online
+24 KITCHEN HD: hd-24-kitchen-hd-online
+EUROSPORT 1 HD: hd-eurosport-1-hd-online
+EUROSPORT 2 HD: hd-eurosport-2-hd-online
+DIEMA SPORT HD: hd-diema-sport-hd-online
+DIEMA SPORT 2 HD: hd-diema-sport-2-hd-online
+DIEMA SPORT 3 HD: hd-diema-sport-3-hd-online
+MAX SPORT 1 HD: hd-max-sport-1-hd-online
+MAX SPORT 2 HD: hd-max-sport-2-hd-online
+MAX SPORT 3 HD: hd-max-sport-3-hd-online
+MAX SPORT 4 HD: hd-max-sport-4-hd-online
+RING BG HD: hd-ring-bg-hd-online
+NOVA SPORT HD: hd-nova-sport-hd-online
+PLANETA HD: hd-planeta-hd-online
+DSTV: dstv-online
+FOLKLOR TV: folklor-tv-online
+PLANETA FOLK: planeta-folk-online
+RODINA TV: rodina-tv-online
+TIANKOV TV: tiankov-tv-online
+CITY TV: city-tv-online
+THE VOICE: the-voice-online
+TLC: tlc-online
+TRAVEL CHANNEL HD: hd-travel-channel-hd-online
+TRAVEL TV: travel-tv-online
+EVROKOM: evrokom-online
+78 TV HD: hd-78-tv-hd-online
+KANAL 3: kanal-3-online
+SKAT: skat-online
+TV 1: tv-1-online
+BTK: vtk-online
+AXN: axn-online
+AXN BLACK: axn-black-online
+AXN WHITE: axn-white-online
+EPIC DRAMA HD: hd-epic-drama-hd-online
+CODE FASHION TV HD: hd-code-fashion-tv-hd-online
+CARTOON NETWORK: cartoon-network-online
+DISNEY CHANNEL: disney-channel-online
+E KIDS: e-kids-online
+FOOD NETWORK HD: hd-food-network-hd-online
+NICK JR: nick-jr-online
+NICKELODEON: nickelodeon-online
+NICKTOONS: nicktoons-online
