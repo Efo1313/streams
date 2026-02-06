@@ -1,26 +1,16 @@
-name: Update IPTV List
-on:
-  schedule:
-    - cron: '0 */6 * * *' # Her 6 saatte bir çalışır
-  workflow_dispatch: # Manuel çalıştırma butonu ekler
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: pip install requests beautifulsoup4
       - name: Run Script
         run: python update_list.py
+
       - name: Commit and Push
         run: |
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
-          git add playlist.m3u
-          git commit -m "Update playlist" || exit 0
-          git push
+          # Sadece dosya varsa işlem yap, yoksa hata verme
+          if [ -f playlist.m3u ]; then
+            git add playlist.m3u
+            git commit -m "Update playlist"
+            git push
+          else
+            echo "Hata: playlist.m3u dosyası bulunamadı!"
+            exit 1
+          fi
