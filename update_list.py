@@ -7,27 +7,44 @@ PAROLA_URL = "https://www.seir-sanduk.com/linkzagledane.php?parola=FaeagaDs3AdKa
 FILE_NAME = "playlist.m3u"
 
 def get_latest_data():
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://www.seir-sanduk.com/'
-    }
+    session = requests.Session()
+    # Gerçek bir tarayıcı (Chrome) gibi görünmek için gerekli başlıklar
+    session.headers.update({
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+        'Cache-Control': 'max-age=0',
+        'Connection': 'keep-alive',
+        'Referer': 'https://www.seir-sanduk.com/',
+        'Upgrade-Insecure-Requests': '1'
+    })
     
     try:
-        session = requests.Session()
-        response = session.get(PAROLA_URL, headers=headers, timeout=15)
+        # Önce ana sayfaya gidip çerez alıyoruz
+        session.get("https://www.seir-sanduk.com/", timeout=15)
+        
+        # Şimdi parola linkine gidiyoruz
+        response = session.get(PAROLA_URL, timeout=15)
+        
+        # Eğer hala 403 alıyorsak içeriği kontrol et
+        if response.status_code == 403:
+            print("Hata 403: GitHub IP'si engellenmiş olabilir.")
+            return None
+            
         response.raise_for_status()
         
-        # HTML içinden pass parametresini bul (Örn: pass=11kal...)
+        # HTML içinden pass parametresini bul
         pass_match = re.search(r'pass=([a-zA-Z0-9]+)', response.text)
         
         if pass_match:
             return pass_match.group(1)
         else:
-            print("Hata: Sayfa içinde 'pass' kodu bulunamadı.")
-            return None
+            # Bazı durumlarda pass link içinde hash olarak geçer
+            hash_match = re.search(r'hash=([a-zA-Z0-9]+)', response.text)
+            return hash_match.group(1) if hash_match else None
             
     except Exception as e:
-        print(f"Bağlantı Hatası: {e}")
+        print(f"Hata detayı: {e}")
         return None
 
 def create_m3u(pass_code):
@@ -37,7 +54,6 @@ def create_m3u(pass_code):
         {"name": "BTV HD", "id": "hd-btv-hd"},
         {"name": "NOVA TV HD", "id": "hd-nova-tv-hd"},
         {"name": "DIEMA SPORT HD", "id": "hd-diema-sport-hd"},
-        {"name": "DIEMA SPORT 2 HD", "id": "hd-diema-sport-2-hd"},
         {"name": "MAX SPORT 1 HD", "id": "hd-max-sport-1-hd"}
     ]
     
@@ -45,18 +61,18 @@ def create_m3u(pass_code):
         with open(FILE_NAME, "w", encoding="utf-8") as f:
             f.write("#EXTM3U\n")
             for ch in channels:
-                # Seir-Sanduk direkt m3u8 link yapısı
-                f.write(f'#EXTINF:-1 tvg-id="{ch["id"]}", {ch["name"]}\n')
+                f.write(f'#EXTINF:-1, {ch["name"]}\n')
+                # M3U oynatıcılarda çalışması için tam URL yapısı
                 f.write(f'https://www.seir-sanduk.com/?id={ch["id"]}&pass={pass_code}\n')
-        print(f"M3U dosyası başarıyla oluşturuldu: {FILE_NAME}")
+        print(f"Liste güncellendi. Yeni kod: {pass_code}")
         return True
     except Exception as e:
-        print(f"Dosya yazma hatası: {e}")
+        print(f"Yazma hatası: {e}")
         return False
 
 if __name__ == "__main__":
     code = get_latest_data()
     if code:
         if create_m3u(code):
-            sys.exit(0) # Başarılı çıkış
-    sys.exit(1) # Hatalı çıkış (GitHub Action bunu fark eder)
+            sys.exit(0)
+    sys.exit(1)
