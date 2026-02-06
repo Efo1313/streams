@@ -1,37 +1,26 @@
-name: Kanal Listesi Guncelleyici
-
+name: Update IPTV List
 on:
   schedule:
-    # Her saat başı çalışır
-    - cron: '0 * * * *'
+    - cron: '0 */6 * * *' # Her 6 saatte bir çalışır
   workflow_dispatch: # Manuel çalıştırma butonu ekler
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Depoyu Kontrol Et
-      uses: actions/checkout@v3
-
-    - name: Python Kurulumu
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
-
-    - name: Gerekli Kütüphaneleri Kur
-      run: |
-        pip install cloudscraper
-
-    - name: Guncelleme Kodunu Calistir
-      run: |
-        python main.py
-
-    - name: Degisiklikleri GitHub'a Yukle
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        # Yeni klasörü ve içindeki m3u dosyasını takibe al
-        git add playlist/
-        # Eğer bir değişiklik varsa commit yap ve gönder
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Otomatik Liste Guncelleme" && git push)
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+      - name: Run Script
+        run: python update_list.py
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add playlist.m3u
+          git commit -m "Update playlist" || exit 0
+          git push
