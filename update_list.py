@@ -3,7 +3,7 @@ import re
 import sys
 
 # Ayarlar
-PAROLA_URL = "https://www.seir-sanduk.com/linkzagledane.php?parola=11kalAdKaAde11s"
+PAROLA_URL = "https://www.seir-sanduk.com/linkzagledane.php?parola=F​a​e​a​g​a​D​s​3​A​d​K"
 FILE_NAME = "playlist.m3u"
 
 def get_latest_data():
