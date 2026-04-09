@@ -1,32 +1,26 @@
-name: IPTV Otomatik Guncelle
-
+name: Update List
 on:
   schedule:
-    - cron: '0 */6 * * *' # 6 saatte bir çalışır
-  workflow_dispatch: # Manuel çalıştırma butonu
+    - cron: '0 0 * * *' # Her gece çalışır
+  workflow_dispatch: # Manuel çalıştırma butonu ekler
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Depoyu Kopyala
-        uses: actions/checkout@v3
-
-      - name: Python Kur
-        uses: actions/setup-python@v4
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
-
-      - name: Bagimliliklari Yukle
+          python-version: '3.x'
+      - name: Install dependencies
         run: pip install requests
-
-      - name: Scripti Calistir
-        run: python update_list.py
-
-      - name: Degisiklikleri Kaydet
+      - name: Run script
+        run: python tv.py
+      - name: Commit and push
         run: |
-          git config --global user.name "GitHub Action Bot"
-          git config --global user.email "actions@github.com"
-          git add playlist.m3u
-          # Sadece değişiklik varsa commit yap (hata almamak için)
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Playlist Guncellendi: $(date)" && git push)
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add DeaTHlesS-Androtv.m3u
+          git commit -m "Liste Güncellendi" || exit 0
+          git push
