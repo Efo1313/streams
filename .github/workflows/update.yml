@@ -8,20 +8,26 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+          
       - name: Install dependencies
         run: pip install requests
+        
       - name: Run script
         run: python tv.py
+        
       - name: Commit and push
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
-          git pull origin main --rebase || echo "Pull atlandı"
           git add DeaTHlesS-Androtv.m3u
           git commit -m "Liste Güncellendi" || exit 0
-          git push
+          git pull origin main --rebase
+          git push origin main
