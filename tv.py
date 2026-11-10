@@ -4,13 +4,14 @@ import urllib3
 import warnings
 import os
 import concurrent.futures
+import urllib.parse
 
 # Sertifika uyarılarını kapatmak için
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 warnings.filterwarnings('ignore')
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
 }
 
@@ -43,6 +44,7 @@ def get_andro_content():
         ("androstreamlivebsm2", 'TR:beIN Sport Max 2 HD'),
         ("androstreamlivess1", 'TR:S Sport 1 HD'),
         ("androstreamlivess2", 'TR:S Sport 2 HD'),
+        ("androstreamlivessplus1", 'TR:S Sport Plus HD'),
         ("androstreamlivets", 'TR:Tivibu Sport HD'),
         ("androstreamlivets1", 'TR:Tivibu Sport 1 HD'),
         ("androstreamlivets2", 'TR:Tivibu Sport 2 HD'),
@@ -74,7 +76,6 @@ def get_andro_content():
 
     def check_domain(pattern):
         try:
-            # Süslü parantez içeren veya içermeyen kalıpları yönetme
             url = pattern.format(11) if "{}" in pattern else pattern
             response = requests.get(url, headers=headers, timeout=4, verify=False)
             if response.status_code == 200:
@@ -148,7 +149,15 @@ def get_andro_content():
         for cid, cname in channels:
             final_url = f"{server}/{cid}.m3u8" if "checklist" in server else f"{server}/checklist/{cid}.m3u8"
             final_url = final_url.replace("checklist//", "checklist/")
-            entry = f'#EXTINF:-1 tvg-logo="{STATIC_LOGO}" group-title="Andro-Panel", {cname}\n#EXTVLCOPT:http-referrer={active_site}/\n{final_url}'
+            
+            # Parametreleri URL-encoded şekilde hazırlıyoruz
+            referer = active_site + "/"
+            encoded_referer = urllib.parse.quote(referer, safe='')
+            user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            encoded_ua = urllib.parse.quote(user_agent, safe='')
+            
+            # Pipe (|) syntax ile hem referrer hem de user-agent ekleme
+            entry = f'#EXTINF:-1 tvg-logo="{STATIC_LOGO}" group-title="Andro-Panel", {cname}\n{final_url}|http-referrer={encoded_referer}&user-agent={encoded_ua}'
             results.append(entry)
             
     return results
