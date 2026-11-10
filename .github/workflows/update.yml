@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -28,16 +26,10 @@ jobs:
       - name: Run script
         run: python tv.py
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          
-          # Uzaktaki olası güncellemeleri işlemden önce çek (rebase ile)
-          git pull origin main --rebase || echo "Pull atlandı"
-          
-          git add DeaTHlesS-Androtv.m3u
-          git commit -m "Liste Güncellendi" || echo "Değişiklik yok"
-          
-          # Güvenli bir şekilde gönder
-          git push origin main
+      - name: Auto Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          file_pattern: DeaTHlesS-Androtv.m3u
+          commit_message: "Liste Güncellendi"
+          commit_user_name: "GitHub Action"
+          commit_user_email: "action@github.com"
