@@ -1,33 +1,43 @@
 name: Update List
+
 on:
   schedule:
     - cron: '0 0 * * *' # Her gece çalışır
   workflow_dispatch: # Manuel çalıştırma butonu ekler
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
-          
+
       - name: Install dependencies
         run: pip install requests
-        
+
       - name: Run script
         run: python tv.py
-        
-      - name: Commit and push
+
+      - name: Commit and push changes
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
+          
+          # Uzaktaki olası güncellemeleri işlemden önce çek (rebase ile)
+          git pull origin main --rebase || echo "Pull atlandı"
+          
           git add DeaTHlesS-Androtv.m3u
-          git commit -m "Liste Güncellendi" || exit 0
-          git pull origin main --rebase
+          git commit -m "Liste Güncellendi" || echo "Değişiklik yok"
+          
+          # Güvenli bir şekilde gönder
           git push origin main
