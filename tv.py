@@ -20,11 +20,17 @@ STATIC_LOGO = "https://i.hizliresim.com/8xzjgqv.jpg"
 def get_andro_content():
     print("--- Andro Panel Taraması Başlatıldı ---")
     results = []
-    base_pattern = "https://mahsunsports{}.xyz"
+    
+    # Farklı ihtimallere karşı ana domain kalıpları (Gerekirse artırılabilir)
+    base_patterns = [
+        "https://mahsunsports{}.xyz",
+        "https://biraz{}.xyz"
+    ]
+    
     headers = HEADERS.copy()
     
     channels = [
-        ("androstreamlivebiraz1", 'TR:beIN Sport 1 HD'),
+        ("androstreamlivebiraz1", 'TR:Biraz Live / Özel HD'),
         ("androstreamlivebs1", 'TR:beIN Sport 1 HD'),
         ("androstreamlivebs2", 'TR:beIN Sport 2 HD'),
         ("androstreamlivebs3", 'TR:beIN Sport 3 HD'),
@@ -63,20 +69,25 @@ def get_andro_content():
         ("androstreamliveexn8", 'TR:Exxen 8 HD')
     ]
 
-    def check_domain(index):
-        url = base_pattern.format(index)
+    def check_domain(pattern, index):
+        url = pattern.format(index)
         try:
-            response = requests.get(url, headers=headers, timeout=5, verify=False)
+            response = requests.get(url, headers=headers, timeout=4, verify=False)
             if response.status_code == 200:
                 return url
         except:
             return None
         return None
 
-    print("Aktif domain aranıyor (10-99)...")
+    print("Aktif domain aranıyor...")
     active_site = None
-    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-        futures = [executor.submit(check_domain, i) for i in range(10, 100)]
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
+        futures = []
+        for pattern in base_patterns:
+            for i in range(10, 100):
+                futures.append(executor.submit(check_domain, pattern, i))
+                
         for future in concurrent.futures.as_completed(futures):
             result = future.result()
             if result:
@@ -118,6 +129,10 @@ def get_andro_content():
                 active_servers.append(server)
         except:
             continue
+
+    if not active_servers and servers:
+        # Eğer test_id yanıt vermezse ilk sunucuyu doğrudan baz al
+        active_servers = [servers[0]]
 
     for server in active_servers:
         server = server.rstrip('/')
