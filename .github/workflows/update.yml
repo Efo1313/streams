@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # <--- BU SATIRI EKLE
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -21,7 +23,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip pip install requests # (veya pip install requests)
 
       - name: Run script
         run: python tv.py
